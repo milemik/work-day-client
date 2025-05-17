@@ -8,6 +8,7 @@ import WorkDaysPage, { GetWorkDays } from './pages/WorkDaysPage'
 import CompanyPage, { GetCompanies } from './pages/CompanyPage'
 import AddCompanyPage from './pages/AddCompanyPage'
 import { AddCompany } from './components/AddCompanyForm'
+import CompanyDetailPage, { GetCompanyDetail } from './pages/CompanyDetailPage'
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "work-days",
         Component: WorkDaysPage,
-        loader: async () => await GetWorkDays(),
+        loader: GetWorkDays,
       },
       {
         path:"companies",
@@ -30,12 +31,17 @@ const router = createBrowserRouter([
           {
             index: true,
             Component: CompanyPage,
-            loader: async () => await GetCompanies(),
+            loader: GetCompanies,
           },
           {
             path: "add",
             Component: AddCompanyPage,
             action: AddCompany,
+          },
+          {
+            path: ":companyID",
+            Component: CompanyDetailPage,
+            loader: GetCompanyDetail,
           }
         ]
       }

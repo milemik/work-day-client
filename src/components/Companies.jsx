@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router"
+import { useLoaderData, Link } from "react-router"
 
 export default function Companies() {
 
@@ -8,7 +8,7 @@ export default function Companies() {
         <div className="justify-items-center grid gap-4">
             <h1>Your Companies</h1>
             <ul className="grid gap-4">
-                {companies.map((company) => <li key={company.uuid} className="text-2xl bg-blue-300 rounded-2xl p-4">{company.name}</li>)}
+                {companies.map((company) => <li key={company.uuid} className="text-2xl bg-blue-300 rounded-2xl p-4"><Link to={company.uuid}>{company.name}</Link></li>)}
             </ul>
         </div>
     )
