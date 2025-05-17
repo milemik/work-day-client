@@ -5,7 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Root from './pages/Root'
 import HomePage from  "./pages/HomePage"
 import WorkDaysPage, { GetWorkDays } from './pages/WorkDaysPage'
-import CompanyPage from './pages/CompanyPage'
+import CompanyPage, { GetCompanies } from './pages/CompanyPage'
+import AddCompanyPage from './pages/AddCompanyPage'
+import { AddCompany } from './components/AddCompanyForm'
 
 
 const router = createBrowserRouter([
@@ -18,13 +20,24 @@ const router = createBrowserRouter([
         Component: HomePage
       },
       {
-        path: "work-days/",
+        path: "work-days",
         Component: WorkDaysPage,
         loader: async () => await GetWorkDays(),
       },
       {
-        path:"companies/",
-        Component: CompanyPage,
+        path:"companies",
+        children: [
+          {
+            index: true,
+            Component: CompanyPage,
+            loader: async () => await GetCompanies(),
+          },
+          {
+            path: "add",
+            Component: AddCompanyPage,
+            action: AddCompany,
+          }
+        ]
       }
     ]
   }
