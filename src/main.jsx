@@ -8,6 +8,7 @@ import WorkDaysPage, { GetWorkDays } from './pages/WorkDaysPage'
 import CompanyPage, { GetCompanies } from './pages/CompanyPage'
 import AddCompanyPage, {AddCompany} from './pages/AddCompanyPage'
 import CompanyDetailPage, { DeleteCompany, GetCompanyDetail } from './pages/CompanyDetailPage'
+import AddWorkDayPage, { AddWorkDay } from './pages/AddWorkDayPage'
 
 
 const router = createBrowserRouter([
@@ -21,8 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: "work-days",
-        Component: WorkDaysPage,
-        loader: GetWorkDays,
+        children:[
+          {
+            index: true,
+            Component: WorkDaysPage,
+            loader: GetWorkDays,
+          },
+          {
+            path: "add",
+            Component: AddWorkDayPage,
+            loader: GetCompanies,
+            action: AddWorkDay,
+          }
+        ]
       },
       {
         path:"companies",

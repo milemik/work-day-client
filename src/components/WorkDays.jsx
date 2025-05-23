@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router"
+import WorkDay from "./WorkDay";
 
 export default function WorkDays() {
     const data = useLoaderData();
@@ -18,7 +19,7 @@ export default function WorkDays() {
             <div>
                 {data.length === 0 ? <p>No work days yet</p>: null}
                 <ul className="grid gap-4">
-                    {data.map((item) => <li>{item}</li>)}
+                    {data.map((item) => <WorkDay workDay={item}/>)}
                 </ul>
             </div>
         </div>

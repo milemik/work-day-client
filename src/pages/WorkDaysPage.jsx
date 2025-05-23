@@ -1,8 +1,10 @@
+import { Link } from "react-router"
 import WorkDays from "../components/WorkDays"
 
 export default function WorkDaysPage() {
     return (
         <>
+            <Link to="add" className="bg-cyan-500 rounded-xl font-bold text-2xl p-2">Add Work Day</Link>
             <WorkDays />
         </>
     )
