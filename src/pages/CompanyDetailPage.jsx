@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "react-router"
+import { Form, redirect, useLoaderData } from "react-router"
 
 export default function CompanyDetailPage() {
 
@@ -51,7 +51,7 @@ export async function DeleteCompany({request, params}) {
             return {"error": response.json()}
         }
 
-        return await response.json()
+        return redirect("companies/")
     } catch {
         return {"error": "Server error"}
     }
