@@ -8,7 +8,7 @@ import WorkDaysPage, { GetWorkDays } from './pages/WorkDaysPage'
 import CompanyPage, { GetCompanies } from './pages/CompanyPage'
 import AddCompanyPage from './pages/AddCompanyPage'
 import { AddCompany } from './components/AddCompanyForm'
-import CompanyDetailPage, { GetCompanyDetail } from './pages/CompanyDetailPage'
+import CompanyDetailPage, { DeleteCompany, GetCompanyDetail } from './pages/CompanyDetailPage'
 
 
 const router = createBrowserRouter([
@@ -42,6 +42,7 @@ const router = createBrowserRouter([
             path: ":companyID",
             Component: CompanyDetailPage,
             loader: GetCompanyDetail,
+            action: DeleteCompany
           }
         ]
       }
