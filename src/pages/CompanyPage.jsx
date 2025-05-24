@@ -3,7 +3,7 @@ import Companies from "../components/Companies";
 
 export default function CompanyPage() {
     return (
-        <div className="grid gap-4 justify-items-center">
+        <div className="grid gap-4 justify-items-center pt-4">
             <Link to="add" className="coursor-pointer bg-blue-300 p-4 rounded-2xl">Add company</Link>
             <Companies />
         </div>

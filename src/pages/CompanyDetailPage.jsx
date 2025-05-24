@@ -14,7 +14,7 @@ export default function CompanyDetailPage() {
             <h2 className="text-3xl">{data.type}</h2>
             <Form method="delete" className="grid gap-4">
                 <input type="hidden" name="companyID" value={data.uuid} />
-                <input className="bg-red-500 rounded-xl font-bold text-2xl" type="submit" value="DELETE" />
+                <input className="bg-red-500 rounded-xl font-bold text-2xl cursor-pointer p-2" type="submit" value="DELETE" />
             </Form>
         </div>
     )

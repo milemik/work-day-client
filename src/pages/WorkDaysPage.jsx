@@ -3,7 +3,7 @@ import WorkDays from "../components/WorkDays"
 
 export default function WorkDaysPage() {
     return (
-        <div className="grid gap-4 justify-items-center">
+        <div className="grid gap-4 justify-items-center pt-4">
             <Link to="add" className="bg-cyan-500 rounded-xl font-bold text-2xl p-2">Add Work Day</Link>
             <WorkDays />
         </div>
