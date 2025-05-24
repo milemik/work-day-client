@@ -37,7 +37,7 @@ export async function AddCompany({ request, params }) {
             console.log(resData);
             return { "error": "error creating company" }
         }
-        return redirect("companies/")
+        return redirect("/companies")
     } catch {
         return { "error": "server error" }
     }

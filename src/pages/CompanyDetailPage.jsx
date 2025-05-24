@@ -51,7 +51,7 @@ export async function DeleteCompany({request, params}) {
             return {"error": response.json()}
         }
 
-        return redirect("companies/")
+        return redirect("/companies")
     } catch {
         return {"error": "Server error"}
     }

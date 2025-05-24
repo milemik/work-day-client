@@ -8,7 +8,8 @@ export default function AddWorkDayPage() {
         return <h1 className="justify-items-center text-4xl text-red-400 font-bold">SERVER ERROR</h1>
     }
     return (
-        <Form method="post" className="grid gap-4">
+        <div className="justify-items-center grid gap-4">
+        <Form method="post" className="grid gap-4 max-w-96">
             <label htmlFor="company">
                 Select company
                 <select className="rounded-xl border-2 border-blue-500 p-2" id="company" name="company" required>
@@ -16,11 +17,12 @@ export default function AddWorkDayPage() {
                     <option value="2">Comp 2</option>
                 </select>
             </label>
-            <input id="date" type="date" name="date" />
-            <input id="hoursWorked" type="number" name="hoursWorked" placeholder="Hours worked" required />
-            <input id="workDescription" type="text" name="workDescription" placeholder="Work description" required />
-            <input className="bg-cyan-500 rounded-xl font-bold text-2xl" type="submit" value="ADD" />
+            <input className="border-2 rounded-2xl p-4" id="date" type="date" name="date" />
+            <input className="border-2 rounded-2xl p-4" id="hoursWorked" type="number" name="hoursWorked" placeholder="Hours worked" required />
+            <textarea className="border-2 rounded-2xl p-4" id="workDescription" type="text" name="workDescription" placeholder="Work description" required />
+            <input className="bg-cyan-500 rounded-xl font-bold text-2xl cursor-pointer" type="submit" value="ADD" />
         </Form>
+        </div>
     )
 }
 
