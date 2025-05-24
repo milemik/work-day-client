@@ -4,9 +4,6 @@ import WorkDay from "./WorkDay";
 export default function WorkDays() {
     const data = useLoaderData();
 
-    console.log(data)
-    console.log(typeof(data))
-
     if (data.error) {
         return <div className="justify-items-center">
             <h1 className="text-4xl text-red-400 font-bold">Server error when fecthing data</h1>

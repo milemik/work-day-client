@@ -23,12 +23,10 @@ export default function CompanyDetailPage() {
 
 export async function GetCompanyDetail({request, params}) {
     const companyId = params.companyID;
-    console.log(params)
 
     try {
         const response = await fetch(`http://localhost:8000/api/companies/${companyId}/`, {headers: {"Content-Type": "application/json"}})
         if (!response.ok) {
-            console.log("error" + response.json())
             return {"error": response.json()}
         }
 
@@ -42,12 +40,10 @@ export async function GetCompanyDetail({request, params}) {
 export async function DeleteCompany({request, params}) {
     const data = await request.formData();
     const companyId = data.get("companyID");
-    console.log(companyId)
 
     try {
         const response = await fetch(`http://localhost:8000/api/companies/${companyId}/delete/`, {method: "DELETE"})
         if (!response.ok) {
-            console.log("error" + response.json())
             return {"error": response.json()}
         }
 

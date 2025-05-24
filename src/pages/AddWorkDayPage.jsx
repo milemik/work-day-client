@@ -43,8 +43,7 @@ export async function AddWorkDay({ request, params }) {
         })
         if (!response.ok) {
             const resData = await response.json();
-            console.log(resData);
-            return { "error": "error creating work day" }
+            return { "error": resData }
         }
         return redirect("/work-days")
     } catch {

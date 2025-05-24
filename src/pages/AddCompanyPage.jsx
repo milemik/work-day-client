@@ -34,8 +34,7 @@ export async function AddCompany({ request, params }) {
             })
         if (!response.ok) {
             const resData = response.json();
-            console.log(resData);
-            return { "error": "error creating company" }
+            return { "error": resData }
         }
         return redirect("/companies")
     } catch {
