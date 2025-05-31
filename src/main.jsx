@@ -7,7 +7,7 @@ import HomePage from  "./pages/HomePage"
 import WorkDaysPage, { GetWorkDays } from './pages/WorkDaysPage'
 import CompanyPage, { GetCompanies } from './pages/CompanyPage'
 import AddCompanyPage, {AddCompany} from './pages/AddCompanyPage'
-import CompanyDetailPage, { DeleteCompany, GetCompanyDetail } from './pages/CompanyDetailPage'
+import CompanyDetailPage, { CompanyAction, GetCompanyDetail } from './pages/CompanyDetailPage'
 import AddWorkDayPage, { AddWorkDay } from './pages/AddWorkDayPage'
 
 
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             path: ":companyID",
             Component: CompanyDetailPage,
             loader: GetCompanyDetail,
-            action: DeleteCompany
+            action: CompanyAction
           }
         ]
       }
