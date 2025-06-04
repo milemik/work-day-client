@@ -27,7 +27,7 @@ export default function AddWorkDayPage() {
 }
 
 
-export async function AddWorkDay({ request, params }) {
+export async function AddWorkDay({ request }) {
     const data = await request.formData();
     const requestData = {
         company_id: data.get("company"),
@@ -38,7 +38,10 @@ export async function AddWorkDay({ request, params }) {
     try {
         const response = await fetch("http://localhost:8000/api/work-days/add/", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
             body: JSON.stringify(requestData)
         })
         if (!response.ok) {

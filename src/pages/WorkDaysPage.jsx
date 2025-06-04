@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, redirect } from "react-router"
 import WorkDays from "../components/WorkDays"
 
 export default function WorkDaysPage() {
@@ -12,8 +12,17 @@ export default function WorkDaysPage() {
 
 
 export async function GetWorkDays() {
+    if (!localStorage.getItem("token")) {
+        return redirect("/auth/login/");
+    }
     try {
-        const response = await fetch("http://localhost:8000/api/work-days/")
+        const response = await fetch("http://localhost:8000/api/work-days/", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
         if (!response.ok) {
             console.log("Faild to fetch data")
             return {"error": "Error fetching data"}

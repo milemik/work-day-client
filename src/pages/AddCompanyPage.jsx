@@ -33,7 +33,7 @@ export default function AddCompanyPage() {
 }
 
 
-export async function AddCompany({ request, params }) {
+export async function AddCompany({ request }) {
     const data = await request.formData();
 
     const reqData = {
@@ -51,7 +51,10 @@ export async function AddCompany({ request, params }) {
         const response = await fetch("http://localhost:8000/api/companies/add/",
             { 
                 method: "POST",
-                headers: { "Content-Type": "application/json" }, 
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }, 
                 body: JSON.stringify(reqData) 
             })
         if (!response.ok) {

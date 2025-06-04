@@ -9,6 +9,12 @@ import CompanyPage, { GetCompanies } from './pages/CompanyPage'
 import AddCompanyPage, {AddCompany} from './pages/AddCompanyPage'
 import CompanyDetailPage, { CompanyAction, GetCompanyDetail } from './pages/CompanyDetailPage'
 import AddWorkDayPage, { AddWorkDay } from './pages/AddWorkDayPage'
+import LoginPage from './pages/LoginPage'
+import {action as LoginAction} from './pages/LoginPage';
+import SignUpPage from './pages/SingUpPage'
+import { action as signUpAction } from './pages/SingUpPage';
+import { IsAuthenticated } from './utils/auth'
+import {action as LogoutAction} from './pages/LogOutPage';
 
 
 const router = createBrowserRouter([
@@ -22,6 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "work-days",
+        loader: IsAuthenticated,
         children:[
           {
             index: true,
@@ -38,6 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path:"companies",
+        loader: IsAuthenticated,
         children: [
           {
             index: true,
@@ -56,7 +64,27 @@ const router = createBrowserRouter([
             action: CompanyAction
           }
         ]
-      }
+      },
+      {
+        path: "auth",
+        children: [
+          {
+            path: "login",
+            index: true,
+            Component: LoginPage,
+            action: LoginAction
+          },
+          {
+            path: "singup",
+            Component: SignUpPage,
+            action: signUpAction
+          },
+          {
+            path: "logout",
+            action: LogoutAction
+          }
+        ]
+      },
     ]
   }
 ])

@@ -11,7 +11,13 @@ export default function CompanyPage() {
 }
 
 export async function GetCompanies() {
-    const response = await fetch("http://localhost:8000/api/companies/")
+    const response = await fetch("http://localhost:8000/api/companies/", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    })
     if (!response.ok) {
         return response.json()
     }

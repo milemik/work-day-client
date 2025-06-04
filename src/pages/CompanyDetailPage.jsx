@@ -38,7 +38,10 @@ export async function GetCompanyDetail({request, params}) {
     const companyId = params.companyID;
 
     try {
-        const response = await fetch(`http://localhost:8000/api/companies/${companyId}/`, {headers: {"Content-Type": "application/json"}})
+        const response = await fetch(`http://localhost:8000/api/companies/${companyId}/`,
+            {
+                headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`}}
+        )
         if (!response.ok) {
             return {"error": response.json()}
         }
@@ -50,14 +53,19 @@ export async function GetCompanyDetail({request, params}) {
 }
 
 
-export async function CompanyAction({request, params}) {
+export async function CompanyAction({request}) {
     const data = await request.formData();
     const companyId = data.get("companyID");
     console.log(request.method);
 
     if (request.method === "DELETE") {
         try {
-            const response = await fetch(`http://localhost:8000/api/companies/${companyId}/delete/`, {method: "DELETE"})
+            const response = await fetch(`http://localhost:8000/api/companies/${companyId}/delete/`,
+                {
+                    method: "DELETE",
+                    headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`}
+                }
+            )
             if (!response.ok) {
                 return {"error": response.json()}
             }
