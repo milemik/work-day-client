@@ -1,9 +1,12 @@
-import { redirect, Form, Link } from "react-router";
+import { redirect, Form, Link, useActionData } from "react-router";
 
 export default function SignUpPage() {
+
+    const data = useActionData();
     return (
         <div className="justify-items-center grid gap-4">
             <h1 className="text-4xl font-bold text-center">Sign Up</h1>
+            {data && <h1 className="text-2xl font-bold text-red-500">{data.email}</h1>}
             <Form method="post" className="grid gap-4 max-w-96">
                 <input className="border-2 rounded-2xl p-4" id="email" type="text" name="email" placeholder="EMAIL" required />
                 <input className="border-2 rounded-2xl p-4" id="password" type="password" name="password" placeholder="PASSWORD" required />
@@ -30,7 +33,7 @@ export async function action({request}) {
         if (!response.ok) {
             return response;
         }
-        return redirect("login");
+        return redirect("/auth/login/");
     } catch {
         return new Response(JSON.stringify({error: "Server error"}), {status: 500, headers: {"Content-Type": "application/json"}});
     }
