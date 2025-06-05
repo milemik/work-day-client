@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, redirect } from "react-router";
 import Companies from "../components/Companies";
 
 export default function CompanyPage() {
@@ -18,8 +18,12 @@ export async function GetCompanies() {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
     })
-    if (!response.ok) {
-        return response.json()
+
+    if (response.status === 401 || response.status === 403) {
+        return redirect("/auth/login/");
     }
-    return response.json()
+    if (!response.ok) {
+        return response;
+    }
+    return response;
 }

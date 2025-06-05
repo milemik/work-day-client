@@ -5,7 +5,6 @@ import FormError from "../components/FormError";
 export default function AddCompanyPage() {
     const navigation = useNavigation();
     const actionData = useActionData();
-
     const isSubmitting = navigation.state === "submitting";
 
     console.log(actionData);

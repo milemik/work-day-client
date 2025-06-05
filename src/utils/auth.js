@@ -2,16 +2,14 @@ import { redirect } from "react-router";
 
 
 export function UserLoggedIn() {
-    if (localStorage.getItem("token")) {
-        return true;
+    const token = localStorage.getItem("token");
+    if (token) {
+        return token;
     }
-    return false;
+    return null;
 }
 
 
 export function IsAuthenticated() {
-    if (!UserLoggedIn) {
-        return redirect("/auth/login/");
-    }
-    return null;
+    return UserLoggedIn();
 }

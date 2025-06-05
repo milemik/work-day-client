@@ -1,8 +1,13 @@
-import { Form, redirect, useLoaderData, useNavigation } from "react-router"
+import { Form, redirect, useLoaderData, useNavigation, useRouteLoaderData } from "react-router"
 
 export default function CompanyDetailPage() {
     const data = useLoaderData();
     const navigation = useNavigation();
+
+    const token = useRouteLoaderData("root");
+    if (!token) {
+        return redirect("/auth/login/");
+    }
 
     const isSubmitting = navigation.state === "submitting";
 
@@ -42,6 +47,10 @@ export async function GetCompanyDetail({request, params}) {
             {
                 headers: {"Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("token")}`}}
         )
+        if (response.status === 401 || response.status === 403) {
+            return redirect("/auth/login/");
+        }
+
         if (!response.ok) {
             return {"error": response.json()}
         }

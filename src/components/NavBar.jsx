@@ -1,19 +1,30 @@
-import { Form } from "react-router";
+import { Form, useRouteLoaderData } from "react-router";
 import NavBarLink from "./NabBarLink";
+import { use } from "react";
 
 export default function NavBar() {
+
+    const token = useRouteLoaderData("root");
+
     return (
         <nav className="bg-gradient-to-r from-blue-600 to-blue-400 shadow-md py-4">
             <ul className="flex justify-center gap-8 text-xl font-semibold">
                 <NavBarLink toVal={"/"} text={"Home"} />
-                <NavBarLink toVal={"work-days/"} text={"WorkDays"} />
-                <NavBarLink toVal={"companies/"} text={"Companies"} />
-                <NavBarLink toVal={"auth/login"} text={"Login"} />
-                <li>
-                    <Form method="post" action="/auth/logout/">
-                        <button type="submit" className="text-red-500 font-semibold">Logout</button>
-                    </Form>
-                </li>
+                {!token && <>
+                    <NavBarLink toVal={"auth/login"} text={"Login"} />
+                </>}
+                {token && 
+                    <>
+                        <NavBarLink toVal={"work-days/"} text={"WorkDays"} />
+                        <NavBarLink toVal={"companies/"} text={"Companies"} />     
+                        <li>
+                            <Form method="post" action="/auth/logout/">
+                                <button type="submit" className="text-red-500 font-semibold">Logout</button>
+                            </Form>
+                        </li>
+                    </>
+                }
+                
             </ul>
         </nav>
     );
