@@ -1,6 +1,5 @@
 import { Form, useRouteLoaderData } from "react-router";
 import NavBarLink from "./NabBarLink";
-import { use } from "react";
 
 export default function NavBar() {
 
@@ -19,7 +18,7 @@ export default function NavBar() {
                         <NavBarLink toVal={"companies/"} text={"Companies"} />     
                         <li>
                             <Form method="post" action="/auth/logout/">
-                                <button type="submit" className="text-red-500 font-semibold">Logout</button>
+                                <button type="submit" className="font-semibold cursor-pointer">Logout</button>
                             </Form>
                         </li>
                     </>
