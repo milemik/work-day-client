@@ -8,11 +8,11 @@ export default function SignUpPage() {
             <h1 className="text-4xl font-bold text-center">Sign Up</h1>
             {data && <h1 className="text-2xl font-bold text-red-500">{data.email}</h1>}
             <Form method="post" className="grid gap-4 max-w-96">
-                <input className="border-2 rounded-2xl p-4" id="email" type="text" name="email" placeholder="EMAIL" required />
-                <input className="border-2 rounded-2xl p-4" id="password" type="password" name="password" placeholder="PASSWORD" required />
-                <input className="bg-cyan-500 rounded-xl font-bold text-2xl cursor-pointer" type="submit" value={"SIGN UP"} />
+                <input className="border-2 rounded-2xl p-4 border-gray-300" id="email" type="text" name="email" placeholder="EMAIL" required />
+                <input className="border-2 rounded-2xl p-4 border-gray-300" id="password" type="password" name="password" placeholder="PASSWORD" required />
+                <input className="bg-cyan-500 rounded-xl p-4 font-bold text-2xl cursor-pointe" type="submit" value={"SIGN UP"} />
             </Form>
-            <p>Already have an account? <Link to="/auth/login/" className="text-blue-500 cursor-pointer">Login here</Link></p>
+            <p>Already have an account? <Link to="/auth/login/" className="cursor-pointer text-blue-500">Login here</Link></p>
         </div>
     )
 }

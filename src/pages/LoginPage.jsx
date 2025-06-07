@@ -17,9 +17,9 @@ export default function LoginPage() {
                 <h2 className="text-2xl text-red-500 font-semibold text-center">{data.error}</h2>
             }
             <Form method="post" className="grid gap-4 max-w-96">
-                <input className="border-2 rounded-2xl p-4" id="email" type="text" name="email" placeholder="EMAIL" required />
-                <input className="border-2 rounded-2xl p-4" id="password" type="password" name="password"  placeholder="PASSWORD" required />
-                <input className="bg-cyan-500 rounded-xl font-bold text-2xl cursor-pointer" type="submit" value={isSubmitting? "Submitting..." : "LOGIN"} />
+                <input className="border-2 rounded-2xl p-4 border-gray-300" id="email" type="text" name="email" placeholder="EMAIL" required />
+                <input className="border-2 rounded-2xl p-4 border-gray-300" id="password" type="password" name="password"  placeholder="PASSWORD" required />
+                <input className="bg-cyan-500 rounded-xl p-4 font-bold text-2xl cursor-pointer" type="submit" value={isSubmitting? "Submitting..." : "LOGIN"} />
             </Form>
             <p>Dont have account <Link to="/auth/singup/" className="cursor-pointer text-blue-500">register here</Link></p>
         </div>
