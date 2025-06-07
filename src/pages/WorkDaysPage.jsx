@@ -23,6 +23,9 @@ export async function GetWorkDays() {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
         })
+        if (response.status === 401 || response.status === 403) {
+            return redirect("/auth/login/");
+        }
         if (!response.ok) {
             console.log("Faild to fetch data")
             return {"error": "Error fetching data"}

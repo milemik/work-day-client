@@ -21,6 +21,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    id: "root",
+    loader: IsAuthenticated,
     children: [
       {
         index: true,
@@ -28,7 +30,6 @@ const router = createBrowserRouter([
       },
       {
         path: "work-days",
-        loader: IsAuthenticated,
         children:[
           {
             index: true,
@@ -45,7 +46,6 @@ const router = createBrowserRouter([
       },
       {
         path:"companies",
-        loader: IsAuthenticated,
         children: [
           {
             index: true,
