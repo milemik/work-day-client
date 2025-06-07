@@ -26,7 +26,7 @@ export default function LoginPage() {
     )
 }
 
-export async function action({request}) {
+export async function LoginAction({request}) {
     const data = await request.formData();
     const requestData = {
         email: data.get("email"),

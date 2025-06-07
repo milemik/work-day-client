@@ -10,9 +10,9 @@ import AddCompanyPage, {AddCompany} from './pages/AddCompanyPage'
 import CompanyDetailPage, { CompanyAction, GetCompanyDetail } from './pages/CompanyDetailPage'
 import AddWorkDayPage, { AddWorkDay } from './pages/AddWorkDayPage'
 import LoginPage from './pages/LoginPage'
-import {action as LoginAction} from './pages/LoginPage';
+import { LoginAction } from './pages/LoginPage';
 import SignUpPage from './pages/SingUpPage'
-import { action as signUpAction } from './pages/SingUpPage';
+import { SignUpAction } from './pages/SingUpPage';
 import { IsAuthenticated } from './utils/auth'
 import {action as LogoutAction} from './pages/LogOutPage';
 
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
           {
             path: "singup",
             Component: SignUpPage,
-            action: signUpAction
+            action: SignUpAction
           },
           {
             path: "logout",
