@@ -6,7 +6,7 @@ export default function NavBar() {
     const token = useRouteLoaderData("root");
 
     return (
-        <nav className="bg-gradient-to-r from-blue-600 to-blue-400 shadow-md py-4">
+        <nav className="bg-gradient-to-r from-blue-600 to-blue-400 shadow-md py-4 fixed top-0 left-0 w-full z-50">
             <ul className="flex justify-center gap-8 text-xl font-semibold">
                 <NavBarLink toVal={"/"} text={"Home"} />
                 {!token && <>
