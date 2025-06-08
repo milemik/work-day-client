@@ -1,13 +1,12 @@
 import { Form, useRouteLoaderData } from "react-router";
 import NavBarLink from "./NabBarLink";
-import { use } from "react";
 
 export default function NavBar() {
 
     const token = useRouteLoaderData("root");
 
     return (
-        <nav className="bg-gradient-to-r from-blue-600 to-blue-400 shadow-md py-4">
+        <nav className="bg-gradient-to-r from-blue-600 to-blue-400 shadow-md py-4 fixed top-0 left-0 w-full z-50">
             <ul className="flex justify-center gap-8 text-xl font-semibold">
                 <NavBarLink toVal={"/"} text={"Home"} />
                 {!token && <>
@@ -19,7 +18,7 @@ export default function NavBar() {
                         <NavBarLink toVal={"companies/"} text={"Companies"} />     
                         <li>
                             <Form method="post" action="/auth/logout/">
-                                <button type="submit" className="text-red-500 font-semibold">Logout</button>
+                                <button type="submit" className="font-semibold cursor-pointer">Logout</button>
                             </Form>
                         </li>
                     </>
