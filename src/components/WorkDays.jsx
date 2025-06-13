@@ -16,7 +16,7 @@ export default function WorkDays() {
             <div>
                 {data.length === 0 ? <p>No work days yet</p>: null}
                 <ul className="grid gap-4">
-                    {data.map((item) => <WorkDay workDay={item}/>)}
+                    {data.map((item) => <WorkDay key={item.uuid} workDay={item}/>)}
                 </ul>
             </div>
         </div>
