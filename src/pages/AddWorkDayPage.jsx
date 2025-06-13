@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData, useRouteLoaderData, useSearchParams } from "react-router";
+import { Form, Link, redirect, useLoaderData, useRouteLoaderData, useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 
 
@@ -46,19 +46,19 @@ export default function AddWorkDayPage() {
     }
     return (
         <div className="justify-items-center grid gap-4">
-        <Form method={elId ? "put":"post"} className="grid gap-4 max-w-96">
-            <input type="hidden" name="uuid" value={elId} />
-            <label htmlFor="company">
-                Select company
-                <select className="rounded-xl border-2 border-blue-500 p-2" id="company" name="company" required>
-                    {companies.map((company) => <option key={company.uuid} value={company.uuid} defaultValue={companies.uuid === workDay.company}>{company.name}</option>)}
-                </select>
-            </label>
-            <input className="border-2 rounded-2xl p-4" id="date" type="date" name="date" defaultValue={workDay.date}/>
-            <input className="border-2 rounded-2xl p-4" id="hoursWorked" type="number" name="hoursWorked" placeholder="Hours worked" defaultValue={workDay.hoursWorked} required />
-            <textarea className="border-2 rounded-2xl p-4" id="workDescription" type="text" name="workDescription" placeholder="Work description" defaultValue={workDay.workDescription} required />
-            <input className="bg-cyan-500 rounded-xl font-bold text-2xl cursor-pointer" type="submit" value="ADD" />
-        </Form>
+            <Form method={elId ? "put":"post"} className="grid gap-4 max-w-96">
+                <input type="hidden" name="uuid" value={elId} />
+                <label htmlFor="company">
+                    Select company
+                    <select className="rounded-xl border-2 border-blue-500 p-2" id="company" name="company" required>
+                        {companies.map((company) => <option key={company.uuid} value={company.uuid} defaultValue={companies.uuid === workDay.company}>{company.name}</option>)}
+                    </select>
+                </label>
+                <input className="border-2 rounded-2xl p-4" id="date" type="date" name="date" defaultValue={workDay.date}/>
+                <input className="border-2 rounded-2xl p-4" id="hoursWorked" type="number" name="hoursWorked" placeholder="Hours worked" defaultValue={workDay.hoursWorked} required />
+                <textarea className="border-2 rounded-2xl p-4" id="workDescription" type="text" name="workDescription" placeholder="Work description" defaultValue={workDay.workDescription} required />
+                <input className="bg-cyan-500 rounded-xl font-bold text-2xl cursor-pointer" type="submit" value={elId ? "EDIT": "ADD"} />
+            </Form>
         </div>
     )
 }
